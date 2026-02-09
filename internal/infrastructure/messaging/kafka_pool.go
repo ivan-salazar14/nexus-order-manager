@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/nexustrader/nexus-order-manager/internal/config"
-	"github.com/nexustrader/nexus-order-manager/internal/domain"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/config"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/domain"
 	"github.com/segmentio/kafka-go"
 	"go.uber.org/zap"
 )

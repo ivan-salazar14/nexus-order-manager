@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/nexustrader/nexus-order-manager/internal/domain"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/domain"
 )
 
 // BinanceClient defines the interface for Binance API interactions

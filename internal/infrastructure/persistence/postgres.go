@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/nexustrader/nexus-order-manager/internal/config"
-	"github.com/nexustrader/nexus-order-manager/internal/domain"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/config"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/domain"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

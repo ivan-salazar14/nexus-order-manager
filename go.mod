@@ -1,4 +1,4 @@
-module github.com/ivan-salazar14/nexus-order-manager
+module github.com/nexustrader/nexus-order-manager
 
 go 1.23
 
