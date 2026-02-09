@@ -8,13 +8,13 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/nexustrader/nexus-order-manager/internal/application"
-	"github.com/nexustrader/nexus-order-manager/internal/config"
-	"github.com/nexustrader/nexus-order-manager/internal/domain"
-	exchange "github.com/nexustrader/nexus-order-manager/internal/infrastructure/exchange"
-	"github.com/nexustrader/nexus-order-manager/internal/infrastructure/http"
-	"github.com/nexustrader/nexus-order-manager/internal/infrastructure/messaging"
-	"github.com/nexustrader/nexus-order-manager/internal/infrastructure/persistence"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/application"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/config"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/domain"
+	exchange "github.com/ivan-salazar14/nexus-order-manager/internal/infrastructure/exchange"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/infrastructure/http"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/infrastructure/messaging"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/infrastructure/persistence"
 	"go.uber.org/zap"
 )
 

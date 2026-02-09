@@ -6,12 +6,12 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/ivan-salazar14/nexus-order-manager/internal/application"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/config"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/domain"
+	"github.com/ivan-salazar14/nexus-order-manager/internal/infrastructure/persistence"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/nexustrader/nexus-order-manager/internal/application"
-	"github.com/nexustrader/nexus-order-manager/internal/config"
-	"github.com/nexustrader/nexus-order-manager/internal/domain"
-	"github.com/nexustrader/nexus-order-manager/internal/infrastructure/persistence"
 	"go.uber.org/zap"
 )
 
