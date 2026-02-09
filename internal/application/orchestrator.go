@@ -7,10 +7,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ivan-salazar14/nexus-order-manager/internal/domain"
-	"github.com/ivan-salazar14/nexus-order-manager/internal/exchange"
-	"github.com/ivan-salazar14/nexus-order-manager/internal/infrastructure/messaging"
-	"github.com/ivan-salazar14/nexus-order-manager/internal/infrastructure/persistence"
+	"github.com/nexustrader/nexus-order-manager/internal/domain"
+	"github.com/nexustrader/nexus-order-manager/internal/infrastructure/exchange"
+	"github.com/nexustrader/nexus-order-manager/internal/infrastructure/messaging"
+	"github.com/nexustrader/nexus-order-manager/internal/infrastructure/persistence"
 	"go.uber.org/zap"
 )
 
