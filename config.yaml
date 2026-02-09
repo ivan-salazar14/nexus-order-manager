@@ -1,0 +1,38 @@
+# Nexus Trading System Configuration
+
+app:
+  name: "nexus-order-manager"
+  environment: "development"
+
+database:
+  host: "localhost"
+  port: 5432
+  username: "nexus"
+  password: "secure_password"
+  name: "nexus_trading"
+  max_open_conns: 25
+  max_idle_conns: 5
+  ssl_mode: "disable"
+
+binance:
+  testnet:
+    enabled: true
+    api_key: "${BINANCE_TESTNET_API_KEY}"
+    api_secret: "${BINANCE_TESTNET_API_SECRET}"
+    base_url: "https://testnet.binance.vision"
+
+kafka:
+  brokers:
+    - "localhost:9092"
+  consumer_group: "nexus-order-workers"
+  topics:
+    orders: "nexus.orders"
+    events: "nexus.events"
+
+outbox:
+  poll_interval_ms: 500
+  batch_size: 100
+
+logging:
+  level: "info"
+  format: "json"
