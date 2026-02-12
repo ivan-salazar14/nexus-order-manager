@@ -1,46 +1,18 @@
-version: '3.8'
 
 services:
-  postgres:
-    image: postgres:15-alpine
-    container_name: nexus-postgres
-    environment:
-      POSTGRES_USER: nexus
-      POSTGRES_PASSWORD: secure_password
-      POSTGRES_DB: nexus_trading
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U nexus -d nexus_trading"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   kafka:
-    image: confluentinc/cp-kafka:7.5.0
+    image: bitnami/kafka:3.4
     container_name: nexus-kafka
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_CFG_NODE_ID: 1
+      KAFKA_CFG_PROCESS_ROLES: controller,broker
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE: "true"
     ports:
       - "9092:9092"
-    depends_on:
-      zookeeper:
-        condition: service_started
-
-  zookeeper:
-    image: confluentinc/cp-zookeeper:7.5.0
-    container_name: nexus-zookeeper
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-    ports:
-      - "2181:2181"
 
   order-manager:
     build:
@@ -51,10 +23,7 @@ services:
       - "8080:8080"
     environment:
       - BINANCE_TESTNET_API_KEY=${BINANCE_TESTNET_API_KEY}
-      - BINANCE_TESTNET_API_SECRET=${BINANCE_TESTNET_API_SECRET}
     depends_on:
-      postgres:
-        condition: service_healthy
       kafka:
         condition: service_started
     restart: unless-stopped

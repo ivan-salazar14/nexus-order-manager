@@ -18,7 +18,7 @@ import (
 type TradingOrchestrator struct {
 	repo       *persistence.PostgresRepository
 	exchange   exchange.BinanceClient
-	kafkaPool  *messaging.KafkaPool
+	kafkaPool  messaging.KafkaPoolInterface
 	logger     *zap.Logger
 	workerPool int
 	wg         sync.WaitGroup
@@ -30,7 +30,7 @@ type TradingOrchestrator struct {
 func NewTradingOrchestrator(
 	repo *persistence.PostgresRepository,
 	exchangeClient exchange.BinanceClient,
-	kafkaPool *messaging.KafkaPool,
+	kafkaPool messaging.KafkaPoolInterface,
 	logger *zap.Logger,
 	workerPool int,
 ) *TradingOrchestrator {

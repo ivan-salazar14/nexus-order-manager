@@ -51,9 +51,17 @@ func main() {
 	}
 
 	// Initialize Kafka pool
-	kafkaPool := messaging.NewKafkaPool(&cfg.Kafka, logger)
-	if err := kafkaPool.EnsureTopicsExist(); err != nil {
-		logger.Warn("Failed to ensure Kafka topics exist", zap.Error(err))
+	var kafkaPool messaging.KafkaPoolInterface
+	useMockKafka := os.Getenv("USE_MOCK_KAFKA") == "true"
+
+	if useMockKafka {
+		logger.Info("Using mock Kafka pool for development")
+		kafkaPool = messaging.NewMockKafkaPool(&cfg.Kafka, logger)
+	} else {
+		kafkaPool = messaging.NewKafkaPool(&cfg.Kafka, logger)
+		if err := kafkaPool.EnsureTopicsExist(); err != nil {
+			logger.Warn("Failed to ensure Kafka topics exist", zap.Error(err))
+		}
 	}
 	defer kafkaPool.Close()
 
