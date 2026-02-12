@@ -1,3 +1,5 @@
 .env
-.go.sum
+.sum
 .pem
+*.pem
+.vscode
